@@ -1,9 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import './index.css';
 import { head_ofset, tile_size } from '../../Settings/constants';
+import useEventListener from "@use-it/event-listener";
 
+
+const initialPosition = {
+    x: 3,
+    y: 2
+}
 
 const Hero = () => {
+    const [positionState, updatePositionState] = useState(initialPosition);
+    const [directionSide, updateDirectionState] = useState('RIGHT');
+    useEventListener('keydown', (event: KeyboardEvent) => {
+        if (event.key === 'ArrowLeft' || event.which === 65) {
+            const newPosition = {
+                x: positionState.x - 1,
+                y: positionState.y,
+            };
+            updatePositionState(newPosition)
+            updateDirectionState('LEFT')
+        } else if (event.key === 'ArrowRight' || event.which === 68) {
+            const newPosition = {
+                x: positionState.x + 1,
+                y: positionState.y,
+            };
+            updatePositionState(newPosition)
+            updateDirectionState('RIGHT')
+        } else if (event.key === 'ArrowUp' || event.which === 87) {
+            const newPosition = {
+                x: positionState.x,
+                y: positionState.y + 1
+            };
+            updatePositionState(newPosition)
+        } else if (event.key === 'ArrowDown' || event.which === 83) {
+            const newPosition = {
+                x: positionState.x,
+                y: positionState.y - 1
+            };
+            updatePositionState(newPosition)
+        }
+
+
+    })
     return (
         <div
             style={{
@@ -14,8 +53,10 @@ const Hero = () => {
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",
                 animation: 'hero-animation 0.75s steps(4) infinite',
-                bottom: tile_size * 2,
-                left: tile_size * 2,
+                bottom: tile_size * positionState.y,
+                left: tile_size * positionState.x,
+                transform: `scalex(${directionSide === 'RIGHT' ? 1 : -1}) `,
+
             }}
         />
     );
