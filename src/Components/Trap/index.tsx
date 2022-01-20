@@ -7,7 +7,7 @@ const Trap = () => {
         <div
             style={{
                 width: tile_size,
-                height: height_objects,
+                height: 55,
                 backgroundImage: 'url(./assests/TRAP.png)',
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",

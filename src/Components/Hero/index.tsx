@@ -12,6 +12,7 @@ const initialPosition = {
 const Hero = () => {
     const [positionState, updatePositionState] = useState(initialPosition);
     const [directionSide, updateDirectionState] = useState('RIGHT');
+    const [directionUp, updateDirectionUPState] = useState('UP');
     useEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === 'ArrowLeft' || event.which === 65) {
             const newPosition = {
@@ -33,12 +34,14 @@ const Hero = () => {
                 y: positionState.y + 1
             };
             updatePositionState(newPosition)
+            updateDirectionUPState('UP')
         } else if (event.key === 'ArrowDown' || event.which === 83) {
             const newPosition = {
                 x: positionState.x,
                 y: positionState.y - 1
             };
             updatePositionState(newPosition)
+            updateDirectionUPState('DOWN')
         }
 
 
@@ -55,7 +58,7 @@ const Hero = () => {
                 animation: 'hero-animation 0.75s steps(4) infinite',
                 bottom: tile_size * positionState.y,
                 left: tile_size * positionState.x,
-                transform: `scalex(${directionSide === 'RIGHT' ? 1 : -1}) `,
+                transform: `scalex(${directionSide === 'RIGHT' ? 1 : -1}) scaley(${directionUp === 'UP' ? 1 : -1}) `,
 
             }}
         />
