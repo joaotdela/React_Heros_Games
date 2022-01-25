@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useEventListener from "@use-it/event-listener";
 import './index.css';
 import { head_ofset, tile_size } from '../../Settings/constants';
-import useHeroMoviment from '../../hooks/useHeroMoviment'
+import useMiniEnemyMoviment from '../../hooks/useMiniEnemyMoviment'
 
 
 const initialPosition = {
@@ -10,7 +10,7 @@ const initialPosition = {
     y: 1
 }
 const Hero = () => {
-    const moviment = useHeroMoviment(initialPosition);
+    const { position, direction } = useMiniEnemyMoviment(initialPosition);
     return (
         <div
             style={{
@@ -21,9 +21,9 @@ const Hero = () => {
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",
                 animation: 'hero-animation 0.75s steps(4) infinite',
-                bottom: tile_size * moviment.position.y,
-                left: tile_size * moviment.position.x,
-                transform: `scalex(${moviment.direction === 'RIGHT' ? 1 : -1}) `,
+                bottom: tile_size * position.y,
+                left: tile_size * position.x,
+                transform: `scalex(${direction === 'RIGHT' ? 1 : -1}) `,
                 zIndex: 3,
             }}
         />
