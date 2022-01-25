@@ -1,48 +1,16 @@
 import React, { useState } from "react";
+import useEventListener from "@use-it/event-listener";
 import './index.css';
 import { head_ofset, tile_size } from '../../Settings/constants';
-import useEventListener from "@use-it/event-listener";
+import useHeroMoviment from '../../hooks/useHeroMoviment'
 
 
 const initialPosition = {
-    x: 3,
-    y: 2
+    x: 2,
+    y: 1
 }
-
 const Hero = () => {
-    const [positionState, updatePositionState] = useState(initialPosition);
-    const [directionSide, updateDirectionState] = useState('RIGHT');
-    useEventListener('keydown', (event: KeyboardEvent) => {
-        if (event.key === 'ArrowLeft' || event.which === 65) {
-            const newPosition = {
-                x: positionState.x - 1,
-                y: positionState.y,
-            };
-            updatePositionState(newPosition)
-            updateDirectionState('LEFT')
-        } else if (event.key === 'ArrowRight' || event.which === 68) {
-            const newPosition = {
-                x: positionState.x + 1,
-                y: positionState.y,
-            };
-            updatePositionState(newPosition)
-            updateDirectionState('RIGHT')
-        } else if (event.key === 'ArrowUp' || event.which === 87) {
-            const newPosition = {
-                x: positionState.x,
-                y: positionState.y + 1
-            };
-            updatePositionState(newPosition)
-        } else if (event.key === 'ArrowDown' || event.which === 83) {
-            const newPosition = {
-                x: positionState.x,
-                y: positionState.y - 1
-            };
-            updatePositionState(newPosition)
-        }
-
-
-    })
+    const moviment = useHeroMoviment(initialPosition);
     return (
         <div
             style={{
@@ -53,13 +21,13 @@ const Hero = () => {
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",
                 animation: 'hero-animation 0.75s steps(4) infinite',
-                bottom: tile_size * positionState.y,
-                left: tile_size * positionState.x,
-                transform: `scalex(${directionSide === 'RIGHT' ? 1 : -1}) `,
-
+                bottom: tile_size * moviment.position.y,
+                left: tile_size * moviment.position.x,
+                transform: `scalex(${moviment.direction === 'RIGHT' ? 1 : -1}) `,
+                zIndex: 3,
             }}
         />
-    );
+    )
 }
 
 export default Hero;
