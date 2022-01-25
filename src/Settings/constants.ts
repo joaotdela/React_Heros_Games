@@ -9,6 +9,9 @@ export enum Edirection {
     RIGHT = "ArrowRight",
     UP = "ArrowUp",
     DOWN = "ArrowDown",
+}
+
+export enum KeyEdirection{
     KeyLeft = 65,
     KeyRight = 68,
     KeyUp = 87,
