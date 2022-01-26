@@ -8,4 +8,4 @@ function Debugger() {
     );
 }
 
-export default Debugger();
+export default Debugger;
