@@ -5,8 +5,19 @@ import { head_ofset, tile_size } from '../../Settings/constants';
 import { Edirection } from '../../Settings/constants'
 
 
-const MiniDemon = () => {
-    const { position, direction } = useEnemyMoviment({ x: 9, y: 2 })
+//const moviment = {
+// position: { x: 5, y: 5 },
+//  direction: Edirection.RIGHT,
+//};
+
+interface IProps {
+    initialPosition: { x: number, y: number }
+};
+
+const MiniDemon = (props: IProps) => {
+
+
+    const moviment = useEnemyMoviment(props.initialPosition);
     return (
         <div
             style={{
@@ -17,9 +28,9 @@ const MiniDemon = () => {
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",
                 animation: 'minidemon-animation 0.75s steps(4) infinite',
-                bottom: tile_size * position.y,
-                left: tile_size * position.x,
-                transform: `scaleX(${direction === Edirection.RIGHT ? 1 : -1})`,
+                bottom: tile_size * moviment.position.y,
+                left: tile_size * moviment.position.x,
+                transform: `scaleX(${moviment.direction === Edirection.RIGHT ? 1 : -1})`,
                 zIndex: 1,
             }}
         />
