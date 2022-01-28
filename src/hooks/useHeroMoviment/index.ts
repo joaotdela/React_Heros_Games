@@ -24,13 +24,13 @@ function useHeroMoviment(initialPosition: any) {
         } else if (event.key === Edirection.UP || event.which === KeyEdirection.KeyUp) {
             const newPosition = {
                 x: positionState.x,
-                y: positionState.y + 1
+                y: positionState.y - 1,
             };
             updatePositionState(newPosition)
         } else if (event.key === Edirection.DOWN || event.which === KeyEdirection.KeyDown) {
             const newPosition = {
                 x: positionState.x,
-                y: positionState.y - 1
+                y: positionState.y + 1,
             };
             updatePositionState(newPosition)
         }

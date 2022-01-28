@@ -28,7 +28,7 @@ const MiniDemon = (props: IProps) => {
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",
                 animation: 'minidemon-animation 0.75s steps(4) infinite',
-                bottom: tile_size * moviment.position.y,
+                top: tile_size * moviment.position.y,
                 left: tile_size * moviment.position.x,
                 transform: `scaleX(${moviment.direction === Edirection.RIGHT ? 1 : -1})`,
                 zIndex: 1,

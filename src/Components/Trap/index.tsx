@@ -7,12 +7,12 @@ const Trap = () => {
         <div
             style={{
                 width: tile_size,
-                height: 55,
+                height: tile_size,
                 backgroundImage: 'url(./assests/TRAP.png)',
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",
                 animation: 'trap-animation 1s steps(8) infinite',
-                bottom: tile_size,
+                top: tile_size * 3,
                 left: tile_size * 10,
             }}
         />

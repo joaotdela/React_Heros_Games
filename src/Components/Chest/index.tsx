@@ -11,7 +11,7 @@ const Chest = () => {
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",
                 animation: 'chest-animation 1s steps(3) infinite',
-                bottom: tile_size * 6,
+                top: tile_size * 6,
                 left: tile_size * 2,
             }}
         />
