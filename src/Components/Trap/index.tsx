@@ -1,13 +1,12 @@
 import React from "react";
 import './index.css';
-import { head_ofset, height_objects, tile_size } from '../../Settings/constants';
-import { timeEnd } from "console";
+import { height_objects,tile_size } from '../../Settings/constants';
 const Trap = () => {
     return (
         <div
             style={{
                 width: tile_size,
-                height: tile_size,
+                height: height_objects,
                 backgroundImage: 'url(./assests/TRAP.png)',
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",

@@ -5,13 +5,11 @@ import { head_ofset, tile_size } from '../../Settings/constants';
 import useHeroMoviment from '../../hooks/useHeroMoviment'
 import { Edirection } from '../../Settings/constants'
 
-
-const initialPosition = {
-    x: 2,
-    y: 1
+interface IProps{
+    initialPosition: {x: number, y: number}
 }
-const Hero = () => {
-    const { position, direction } = useHeroMoviment(initialPosition);
+const Hero = (props: IProps) => {
+    const { position, direction } = useHeroMoviment(props.initialPosition);
     return (
         <div
             style={{
@@ -22,7 +20,7 @@ const Hero = () => {
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",
                 animation: 'hero-animation 0.75s steps(4) infinite',
-                top: tile_size * position.y,
+                top: tile_size * position.y - head_ofset,
                 left: tile_size * position.x,
                 transform: `scalex(${direction === Edirection.RIGHT ? 1 : -1}) `,
                 zIndex: 3,

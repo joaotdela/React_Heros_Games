@@ -1,6 +1,6 @@
 import React from "react";
 import './index.css';
-import { head_ofset, height_objects, tile_size } from '../../Settings/constants';
+import { height_objects, tile_size } from '../../Settings/constants';
 const Chest = () => {
     return (
         <div
