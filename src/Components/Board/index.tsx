@@ -16,11 +16,25 @@ function getCanvasMap() {
       const canvasYX = canvasY[x];
 
       const position = { x: x, y: y };
-
       const text = canvasYX || canvas[y][x];
       const key = `${x}-${y}`;
       if (text === ECanvas.Hero) {
         array.push(<Hero key={key} initialPosition={position} />)
+      }
+      if (text === ECanvas.Hero) {
+        array.push(<Hero key={key} initialPosition={position} />)
+      }
+      if (text === ECanvas.MiniDemon) {
+        array.push(<MiniDemon key={key} initialPosition={position} />)
+      }
+      if (text === ECanvas.Demon) {
+        array.push(<Demon key={key} initialPosition={position} />)
+      }
+      if (text === ECanvas.Trap) {
+        array.push(<Trap key={key} initialPosition={position} />)
+      }
+      if (text === ECanvas.Chest) {
+        array.push(<Chest key={key} initialPosition={position} />)
       }
       //tilesArray.push(<Tile key={key} position={position} text={text} />);
     }

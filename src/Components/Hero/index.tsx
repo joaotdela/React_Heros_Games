@@ -5,8 +5,8 @@ import { head_ofset, tile_size } from '../../Settings/constants';
 import useHeroMoviment from '../../hooks/useHeroMoviment'
 import { Edirection } from '../../Settings/constants'
 
-interface IProps{
-    initialPosition: {x: number, y: number}
+interface IProps {
+    initialPosition: { x: number, y: number }
 }
 const Hero = (props: IProps) => {
     const { position, direction } = useHeroMoviment(props.initialPosition);

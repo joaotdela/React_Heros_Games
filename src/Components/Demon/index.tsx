@@ -4,8 +4,13 @@ import useEnemyMoviment from '../../hooks/useEnemyMoviment'
 import { demon_size, tile_size } from '../../Settings/constants';
 import { Edirection } from '../../Settings/constants'
 
-const Demon = () => {
-    const { position, direction } = useEnemyMoviment({ x: 4, y: 4 })
+interface IProps{
+    initialPosition: {x: number, y: number}
+}
+
+
+const Demon = (props: IProps) => {
+    const { position, direction } = useEnemyMoviment(props.initialPosition)
     return (
         <div
             style={{

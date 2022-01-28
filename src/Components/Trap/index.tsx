@@ -1,7 +1,13 @@
 import React from "react";
 import './index.css';
-import { height_objects,tile_size } from '../../Settings/constants';
-const Trap = () => {
+import { height_objects, tile_size } from '../../Settings/constants';
+
+interface IProps {
+    initialPosition: { x: number, y: number }
+}
+
+
+const Trap = (props: IProps) => {
     return (
         <div
             style={{
@@ -11,8 +17,8 @@ const Trap = () => {
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",
                 animation: 'trap-animation 1s steps(8) infinite',
-                top: tile_size * 3,
-                left: tile_size * 10,
+                top: tile_size * props.initialPosition.y,
+                left: tile_size * props.initialPosition.x,
             }}
         />
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import { ECanvas } from '../../Context/canvas/helper';
 import { tile_size } from '../../Settings/constants'
 interface Iprops {
-    position: { x: number, y: number },
+    position: { y: number, x: number },
     text: number,
 }
 
@@ -18,15 +18,14 @@ function Tile(props: Iprops) {
             case ECanvas.Hero:
                 return 'Magenta';
             case ECanvas.Trap:
-                return '';
+                return 'chartreuse';
             case ECanvas.Chest:
-                return '';
+                return 'cyan';
             case ECanvas.MiniDemon:
-                return '';
             case ECanvas.Demon:
-                return '';
+                return 'red';
             case ECanvas.Door:
-                return '';
+                return 'white';
 
         }
     }
@@ -35,12 +34,13 @@ function Tile(props: Iprops) {
         <div style={{
             width: tile_size,
             height: tile_size,
-            top: tile_size * props.position.x,
-            left: tile_size * props.position.y,
+            top: tile_size * props.position.y,
+            left: tile_size * props.position.x,
             position: 'absolute',
             border: `2px solid ${color}`,
             color: color,
             fontSize: 32,
+            zIndex: 8,
         }}>
             {props.text}
         </div>

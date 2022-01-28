@@ -1,7 +1,14 @@
 import React from "react";
 import './index.css';
 import { height_objects, tile_size } from '../../Settings/constants';
-const Chest = () => {
+
+interface IProps {
+    initialPosition: { x: number, y: number }
+}
+
+
+
+const Chest = (props: IProps) => {
     return (
         <div
             style={{
@@ -11,8 +18,8 @@ const Chest = () => {
                 backgroundRepeat: 'no-repeat',
                 position: "absolute",
                 animation: 'chest-animation 1s steps(3) infinite',
-                top: tile_size * 6,
-                left: tile_size * 2,
+                top: tile_size * props.initialPosition.y,
+                left: tile_size * props.initialPosition.x,
             }}
         />
     );
