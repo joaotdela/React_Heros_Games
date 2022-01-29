@@ -21,9 +21,6 @@ function getCanvasMap() {
       if (text === ECanvas.Hero) {
         array.push(<Hero key={key} initialPosition={position} />)
       }
-      if (text === ECanvas.Hero) {
-        array.push(<Hero key={key} initialPosition={position} />)
-      }
       if (text === ECanvas.MiniDemon) {
         array.push(<MiniDemon key={key} initialPosition={position} />)
       }
@@ -46,12 +43,6 @@ const elements = getCanvasMap();
 const Board = () => {
   return (
     <div>
-      {/*   <Hero />
-        <Demon />
-        <MiniDemon initialPosition={{ x: 10, y: 2 }} />
-        <MiniDemon initialPosition={{ x: 3, y: 9 }} />
-        <Trap />
-     <Chest />*/}
 
       {elements}
       <img src='./assests/tileset.gif' alt='' width={game_size} height={game_size} />
