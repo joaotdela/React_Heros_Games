@@ -1,10 +1,10 @@
 import useEventListener from '@use-it/event-listener'
 import React from 'react'
-import { checkValidMoviment, handleNextMoviment } from '../../Context/canvas/helper';
-import { Edirection, KeyEdirection } from '../../Settings/constants'
+import { CanvasContext } from '../../Context/canvas';
+import { Edirection, Ewalker } from '../../Settings/constants'
 
 function useHeroMoviment(initialPosition: any) {
-
+    const canvasContext = React.useContext(CanvasContext);
     const [positionState, updatePositionState] = React.useState(initialPosition);
     const [directionSide, updateDirectionState] = React.useState(Edirection.RIGHT);
     useEventListener('keydown', (event: KeyboardEvent) => {
@@ -12,13 +12,14 @@ function useHeroMoviment(initialPosition: any) {
         if (directionSide.indexOf('Arrow') === -1) {
             return
         }
-        const nextPosition = handleNextMoviment(directionSide, positionState);
-        const isValidMoviment = checkValidMoviment(nextPosition);
-        if (isValidMoviment) {
-            updatePositionState(nextPosition);
-            updateDirectionState(directionSide);
+        const moviment = canvasContext.updateCanvas(directionSide, positionState, Ewalker.HERO);
+        if (moviment.nextMoviment.valid) {
+            updatePositionState(moviment.nextPosition);
+            updateDirectionState(moviment.directionSide);
         }
-
+        if (moviment.nextMoviment.dead) {
+            console.log('MORTO')
+        }
     });
     return {
         position: positionState,

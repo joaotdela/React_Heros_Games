@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Edirection } from '../../Settings/constants'
+import { Edirection, Ewalker } from '../../Settings/constants'
 
 export function handleNextMoviment(direction, position) {
     switch (direction) {
@@ -58,18 +58,27 @@ export const canvas = [
     [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL],//WL9
 ];
 
-export function checkValidMoviment(nextPosition) {
+export function checkValidMoviment(nextPosition, walker) {
     const canvasValue = canvas[nextPosition.y][nextPosition.x];
+    let result = walker === Ewalker.HERO ? getHeroValidMoves(canvasValue) : getEnemyValidMoves(canvasValue);
 
-    if (canvasValue === ECanvas.Wall) {
-        return false;
-    }
-    if (canvasValue === ECanvas.Chest) {
-        console.log('Bauzada');
-    }
-    if (canvasValue === ECanvas.Trap) {
-        console.log('Trap')
-    }
-    return true;
+    return result;
 }
 
+export function getHeroValidMoves(canvasValue) {
+    return {
+        valid: canvasValue === ECanvas.Floor || canvasValue === ECanvas.Chest || canvasValue === ECanvas.Trap || canvasValue === ECanvas.MiniDemon || canvasValue === ECanvas.Demon,
+        dead: canvasValue === ECanvas.Trap || canvasValue === ECanvas.MiniDemon || canvasValue === ECanvas.Demon,
+        chest: canvasValue === ECanvas.Chest,
+        door: canvasValue === ECanvas.Door
+    }
+}
+
+export function getEnemyValidMoves(canvasValue) {
+    return {
+        valid: canvasValue === ECanvas.Floor || canvasValue === ECanvas.Hero,
+        dead: false,
+        chest: false,
+        door: false
+    }
+}

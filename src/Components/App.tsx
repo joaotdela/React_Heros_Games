@@ -1,9 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
-import Board from './Board';
 import { game_size } from '../Settings/constants';
-import Debugger from '../Debugger'
+import Game from './Game';
 function App() {
   return (
     <div className="App">
@@ -13,8 +11,7 @@ function App() {
           width: game_size,
           height: game_size,
         }}>
-        <Debugger />
-        <Board />
+        <Game />
       </div>
     </div >
   );
