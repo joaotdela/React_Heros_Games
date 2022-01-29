@@ -1,10 +1,12 @@
 import useEventListener from '@use-it/event-listener'
 import React from 'react'
 import { CanvasContext } from '../../Context/canvas';
+import { ChestContext } from '../../Context/chest';
 import { Edirection, Ewalker } from '../../Settings/constants'
 
 function useHeroMoviment(initialPosition: any) {
     const canvasContext = React.useContext(CanvasContext);
+    const chestsContext = React.useContext(ChestContext);
     const [positionState, updatePositionState] = React.useState(initialPosition);
     const [directionSide, updateDirectionState] = React.useState(Edirection.RIGHT);
     useEventListener('keydown', (event: KeyboardEvent) => {
@@ -19,6 +21,9 @@ function useHeroMoviment(initialPosition: any) {
         }
         if (moviment.nextMoviment.dead) {
             console.log('MORTO')
+        }
+        if (moviment.nextMoviment.chest) {
+            chestsContext.updateOpenedChests();
         }
     });
     return {
