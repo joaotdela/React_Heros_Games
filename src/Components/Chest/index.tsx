@@ -13,6 +13,14 @@ interface IProps {
 const Chest = (props: IProps) => {
     const chestsContext = React.useContext(ChestContext);
     console.log('abriu', chestsContext.openedChests.total);
+    console.log('posição', chestsContext.openedChests.positions);
+    const shouldAnimate = chestsContext.openedChests.positions.find((position) => {
+        const match = props.initialPosition.y === position.y && props.initialPosition.x === position.x;
+
+        return match;
+    });
+
+    const animation = shouldAnimate ? 'chest-animation 1s steps(3)' : null;
 
 
     return (
@@ -25,7 +33,7 @@ const Chest = (props: IProps) => {
                 position: "absolute",
                 top: tile_size * props.initialPosition.y,
                 left: tile_size * props.initialPosition.x,
-                animation: 'chest-animation 1s steps(3) infinite',
+                animation: animation,
             }}
         />
     );

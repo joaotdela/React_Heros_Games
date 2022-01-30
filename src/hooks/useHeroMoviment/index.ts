@@ -24,7 +24,10 @@ function useHeroMoviment(initialPosition: any) {
             console.log('MORTO')
         }
         if (moviment.nextMoviment.chest) {
-            chestsContext.updateOpenedChests();
+            chestsContext.updateOpenedChests(moviment.nextPosition);
+        }
+        if (chestsContext.totalChests === chestsContext.openedChests.total && moviment.nextMoviment.door) {
+            
         }
     });
     return {

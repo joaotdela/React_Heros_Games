@@ -77,7 +77,7 @@ export function getHeroValidMoves(canvasValue) {
 export function getEnemyValidMoves(canvasValue) {
     return {
         valid: canvasValue === ECanvas.Floor || canvasValue === ECanvas.Hero,
-        dead: false,
+        dead: canvasValue === ECanvas.Hero,
         chest: false,
         door: false
     }
