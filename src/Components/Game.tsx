@@ -9,7 +9,7 @@ function Game() {
     return (
         <CanvasProvider>
             <ChestProvider>
-                <Debugger />
+                {/* <Debugger /> */}
                 <Board />
             </ChestProvider>
         </CanvasProvider>

@@ -21,6 +21,13 @@ function useEnemyMoviment(initialPosition: any) {
             updateDirectionState(randomDirections);
         }
 
+        if (moviment.nextMoviment.dead) {
+            setTimeout(() => {
+                alert('Você Morreu');
+            })
+            window.location.reload();
+        }
+
     }, 2000);
     return {
         position: positionState,

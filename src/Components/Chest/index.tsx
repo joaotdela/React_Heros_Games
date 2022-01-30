@@ -20,7 +20,7 @@ const Chest = (props: IProps) => {
         return match;
     });
 
-    const animation = shouldAnimate ? 'chest-animation 1s steps(3)' : null;
+    const animation = shouldAnimate ? 'chest-animation 1s steps(2) forwards' : null;
 
 
     return (

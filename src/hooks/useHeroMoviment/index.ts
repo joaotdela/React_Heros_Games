@@ -21,13 +21,19 @@ function useHeroMoviment(initialPosition: any) {
             updateDirectionState(moviment.directionSide);
         }
         if (moviment.nextMoviment.dead) {
-            console.log('MORTO')
+            setTimeout(() => {
+                alert('Você Morreu');
+            })
+            window.location.reload();
         }
         if (moviment.nextMoviment.chest) {
             chestsContext.updateOpenedChests(moviment.nextPosition);
         }
         if (chestsContext.totalChests === chestsContext.openedChests.total && moviment.nextMoviment.door) {
-            
+            setTimeout(() => {
+                alert('Você Ganhou');
+            })
+            window.location.reload();
         }
     });
     return {
