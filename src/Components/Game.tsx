@@ -1,6 +1,7 @@
 import React from 'react';
 import CanvasProvider from '../Context/canvas';
 import ChestProvider from '../Context/chest';
+
 import Debugger from '../Debugger';
 import Board from './Board';
 

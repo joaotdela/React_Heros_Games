@@ -20,7 +20,16 @@ function ChestProvider(props: IProps) {
             positions: []
         },
         updateOpenedChests: () => {
-            console.log('chests');
+            updateChestsState((prevState) => {
+                return {
+                    totalChests: prevState.totalChests,
+                    openedChests: {
+                        total: prevState.openedChests.total + 1,
+                        positions: [],
+                    },
+                    updateOpenedChests: prevState.updateOpenedChests,
+                };
+            })
         }
     });
     return (

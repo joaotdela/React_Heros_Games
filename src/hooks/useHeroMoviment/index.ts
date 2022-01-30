@@ -2,7 +2,8 @@ import useEventListener from '@use-it/event-listener'
 import React from 'react'
 import { CanvasContext } from '../../Context/canvas';
 import { ChestContext } from '../../Context/chest';
-import { Edirection, Ewalker } from '../../Settings/constants'
+import { Edirection, Ewalker } from '../../Settings/constants';
+
 
 function useHeroMoviment(initialPosition: any) {
     const canvasContext = React.useContext(CanvasContext);
@@ -12,7 +13,7 @@ function useHeroMoviment(initialPosition: any) {
     useEventListener('keydown', (event: KeyboardEvent) => {
         const directionSide = event.key as Edirection;
         if (directionSide.indexOf('Arrow') === -1) {
-            return
+            return;
         }
         const moviment = canvasContext.updateCanvas(directionSide, positionState, Ewalker.HERO);
         if (moviment.nextMoviment.valid) {

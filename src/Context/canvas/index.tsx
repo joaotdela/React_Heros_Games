@@ -26,7 +26,6 @@ function CanvasProvider(props: IProps) {
 
                     newCanvas[currentPosition.y][currentPosition.x] = ECanvas.Floor;
                     newCanvas[nextPosition.y][nextPosition.x] = currentValue;
-                    console.log(newCanvas);
                     return {
                         canvas: newCanvas,
                         updateCanvas: prevState.updateCanvas,
